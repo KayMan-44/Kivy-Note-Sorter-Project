@@ -1,0 +1,52 @@
+#:kivy 2.1.0
+
+<NoteSorter>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 10
+        padding: 10
+
+        TextInput:
+            id: note_name
+            hint_text: "Note Name"
+
+        TextInput:
+            id: note_subject
+            hint_text: "Subject"
+
+        TextInput:
+            id: note_content
+            hint_text: "Write..."
+            size_hint_y: None
+            height: 100
+
+        Button:
+            text: "SAVE"
+            on_press: app.save_Note()
+
+        Button:
+            text: "STITCH FILES"
+            on_press: app.open_stitch_popup()
+
+        Button:
+            text: "EXPORT"
+            on_press: app.export_As_txt()
+
+        Button:
+            text: "NEW"
+            on_press: app.new_Note()
+
+        ScrollView:
+            size_hint_y: None
+            height: 200
+
+            GridLayout:
+                id: notes_list
+                cols: 1
+                spacing: 10
+                size_hint_y: None
+                height: self.minimum_height
+
+        Button:
+            text: "DELETE"
+            on_press: app.confirm_delete_note()
